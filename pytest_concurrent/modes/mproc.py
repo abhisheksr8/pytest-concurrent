@@ -2,7 +2,7 @@ import os
 import time
 import multiprocessing
 import concurrent.futures
-
+from io import open
 import py
 from _pytest.junitxml import LogXML
 from _pytest.terminal import TerminalReporter
@@ -145,7 +145,7 @@ class ConcurrentLogXML(LogXML):
                     self.stats['skipped'] + self.stats['error'] -
                     self.cnt_double_fail_tests)
         # print("NODE REPORTS: " + str(NODEREPORTS))
-        logfile.write('<?xml version="1.0" encoding="utf-8"?>')
+        logfile.write(unicode('<?xml version="1.0" encoding="utf-8"?>'))
         logfile.write(Junit.testsuite(
             self._get_global_properties_node(),
             [self.concurrent_log_to_xml(x) for x in MultiProcessMode.NODEREPORTS],
