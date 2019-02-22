@@ -120,6 +120,7 @@ class ConcurrentLogXML(LogXML):
     '''to provide XML reporting for multiprocess mode'''
 
     def __init__(self, logfile, prefix, suite_name="pytest"):
+        super(ConcurrentLogXML, self).__init__(logfile, prefix)
         logfile = logfile
         logfile = os.path.expanduser(os.path.expandvars(logfile))
         self.logfile = os.path.normpath(os.path.abspath(logfile))
